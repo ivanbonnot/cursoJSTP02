@@ -82,6 +82,11 @@ h3 {
   transform: scale(0.98);
 }
 
+#calcular:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
 #calcular:focus {
   outline: 0;
 }
