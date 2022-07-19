@@ -49,5 +49,5 @@ function LimpiarHTML() {
         mostrarCalculo.removeChild(mostrarCalculo.firstChild);
     }
     reiniciar.disabled = true
-    precioProductoString = ''
+    precioProductoString.value = ''
 }
