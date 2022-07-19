@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  height: 50vh;
+  height: auto;
   width: 75vw;
   background-color: #fff;
   display: flex;
@@ -32,10 +32,13 @@ body {
   
 }
 
-.calculo {
-  font-size: 30px;
+.calculo div {
+  font-size: 1.5rem;
   letter-spacing: 1px;
+  line-height: 40px;
   margin: 20px;
+  max-width: 600px;
+  text-align: center;
 }
 
 input {
@@ -47,7 +50,6 @@ input {
 h3 {
   margin: 0;
   opacity: 0.5;
-  letter-spacing: 2px;
 }
 
 .btn {
@@ -57,14 +59,25 @@ h3 {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
   padding: 14px 40px;
+  margin: 10px;
   font-size: 16px;
   cursor: pointer;
 }
 
-.btn:active {
+#reinicio:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+.active:enabled {
+  background-color: #9f68e0;
+  cursor: pointer;
+}
+
+#calcular:active {
   transform: scale(0.98);
 }
 
-.btn:focus {
+#calcular:focus {
   outline: 0;
 }

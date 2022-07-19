@@ -1,53 +1,41 @@
 const precioProductoString = document.getElementById("precioProducto") 
 const calcular = document.getElementById('calcular')
+const reiniciar = document.getElementById('reinicio')
 const mostrarCalculo = document.getElementById('calculo')
 
-let sinIva = 0
-let seisCuotas = 0
-let doceCuotas = 0
+reiniciar.disabled = true
 
-calcular.addEventListener('click', ()=> validarInput(precioProducto))
+calcular.addEventListener('click', ()=> validarInput())
 
-function validarInput(precio) {
+function validarInput() {
     const precioProducto = parseInt(precioProductoString.value)
     console.log(precioProducto, typeof(precioProducto))
 
-    if( precio === '' && precio <= 0) {
+    if( precioProducto === '' || precioProducto <= 0 || isNaN(precioProducto)) {
         console.log("ingrese un precio válido")
     } else {
-        calculoSinIva(precioProducto)
-        calculoSeisCuotas(precioProducto)
-        calculoDoceCuotas(precioProducto)
+        calculo(precioProducto)
+        
     }
 }
 
 
 //Precio sin iva
-function calculoSinIva(precio){
-    sinIva = precio - (precio * 0.21) 
-    
+function calculo(precio){
+    const sinIva = precio - (precio * 0.21) 
+    const seisCuotas = Math.ceil((precio / 6 ) )
+    const doceCuotas = Math.ceil((precio + (precio * 0.3)) / 12 )
+    const totalEnDoce = doceCuotas * 12
 
-}
-
-//Precio en 6 cuotas sin int
-function calculoSeisCuotas(precio){
-    seisCuotas = (precio / 6 ) 
-   
-}
-
-//Precio en 12 cuotas con int de 30%
-function calculoDoceCuotas(precio){
     
-    doceCuotas = (precio + (precio * 0.3)) / 12 
-    
-    agregarAlHTML()
+    agregarAlHTML(sinIva, seisCuotas, doceCuotas, totalEnDoce)
 }
 
 //Agregar al html
-function agregarAlHTML() {
-    const parrafo = document.createElement('p');
-    parrafo.textContent = `El precio sin IVA es: ${sinIva}
-                           El precio en 6 cuotas es: ${seisCuotas}
-                           El precio en 12 cuotas con recargo es: ${doceCuotas}`
+function agregarAlHTML(sinIva, seisCuotas, doceCuotas, totalEnDoce) {
+    const parrafo = document.createElement('div');
+    parrafo.innerHTML = `<p>El precio sin IVA es: $${sinIva}</p> 
+                         <p>El precio en 6 cuotas es: $${seisCuotas}. El total es el mismo </p>
+                         <p>El precio en 12 cuotas con recargo es: $${doceCuotas}. El total es de $${totalEnDoce}</p>`
     mostrarCalculo.appendChild(parrafo);
 }
