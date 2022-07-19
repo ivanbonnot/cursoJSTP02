@@ -38,7 +38,7 @@ function agregarAlHTML(sinIva, seisCuotas, doceCuotas, totalEnDoce) {
                          <p>El precio en 6 cuotas es: $${seisCuotas}. El total es el mismo </p>
                          <p>El precio en 12 cuotas con recargo es: $${doceCuotas}. El total es de $${totalEnDoce}</p>`
     mostrarCalculo.appendChild(parrafo);
-
+    calcular.disabled = true
     reiniciar.disabled = false
 }
 
@@ -50,4 +50,5 @@ function LimpiarHTML() {
     }
     reiniciar.disabled = true
     precioProductoString.value = ''
+    calcular.disabled = false
 }
